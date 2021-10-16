@@ -210,6 +210,14 @@ AFRAME.registerComponent("markerhandler", {
     marker.addEventListener("markerFound", function () {
       const markerValue = marker.getAttribute("value");
       idsInGame.add(+markerValue);
+      if (scanning) {
+        window.notie.alert({
+          type: "success",
+          text: "<b>Character scanned, scan other players Barcode or Finish scanning</b>",
+          time: 5,
+          position: "bottom",
+        });
+      }
     });
   },
 });
