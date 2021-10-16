@@ -74,7 +74,7 @@ function createGame() {
   playerId = Math.floor(Math.random() * characters.length);
   window.notie.alert({
     type: "success",
-    text: "Character selected, click Show Barcode for others to join",
+    text: "<b>Character selected, click Show Barcode for others to join</b>",
     time: 5,
     position: "bottom",
   });
@@ -94,7 +94,7 @@ function joinGame(joinButton) {
     idsInGame.clear();
     window.notie.alert({
       type: "info",
-      text: "Scan other players barcodes",
+      text: "<b>Scan other players Barcodes, then press 'Finish Scanning' button</b>",
       stay: true,
       position: "bottom",
     });
@@ -110,7 +110,7 @@ function joinGame(joinButton) {
       ];
     window.notie.alert({
       type: "success",
-      text: "Show your Barcode to other players",
+      text: "<b>Character selected, show your Barcode to other players</b>",
       position: "bottom",
     });
   }
