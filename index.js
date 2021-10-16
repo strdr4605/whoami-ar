@@ -1,4 +1,14 @@
-const characters = ["red", "green", "blue"];
+const characters = [
+  "red",
+  "green",
+  "blue",
+  "white",
+  "black",
+  "yellow",
+  "purple",
+  "darkorange",
+  "magenta",
+];
 /**
  * @type Set<number>
  */
