@@ -9,9 +9,14 @@
 </head>
 
 <body style="margin : 0px; overflow: hidden;">
-  <button id="barcodebtn">Barcode</button>
-  <div id="barcodecontainer">
-    <img id="barcodeimg" src="barcodes/0.png" alt="" srcset="">
+  <div id="menu">
+    <button id="create" onclick="createGame()">Create Game</button>
+    <button id="join" onclick="joinGame(this)">Join Game</button>
+    <button id="barcodebtn" onclick="toggleBarcode(this)">Toggle Barcode</button>
+  </div>
+  <div id="barcode-container">
+    <img id="barcode-img" src="barcodes/0.png" alt="barcode">
+    <h2 id="warning">Create or join a game</h2>
   </div>
 
   <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->

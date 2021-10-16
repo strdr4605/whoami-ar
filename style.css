@@ -1,11 +1,21 @@
-#barcodebtn {
+button {
+  margin: 0 10px;
+}
+
+#menu {
+  background-color: #faf181;
+  width: 100vw;
   position: fixed;
-  top: 20px;
-  left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  top: 0;
+  left: 0;
   z-index: 100;
 }
 
-#barcodecontainer {
+#barcode-container {
   position: fixed;
   align-items: center;
   justify-content: center;
@@ -17,11 +27,11 @@
   height: 100vh;
 }
 
-#barcodeimg {
+#barcode-img {
   width: 300px;
   height: 300px;
 }
 
-.show-marker {
+.show-barcode {
   display: flex !important;
 }
