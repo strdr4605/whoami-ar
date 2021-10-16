@@ -26,8 +26,58 @@ const markers = characters.map((color, i) => {
 });
 scene.prepend(...markers);
 
+let showHowToPlay = true;
+function howToPlay() {
+  if (!showHowToPlay) {
+    return;
+  }
+  showHowToPlay = false;
+  window.notie.force(
+    {
+      type: "info",
+      text: `
+      <h2>WHO AM I</h2>
+      <h3>Augmented Reality edition</h3>
+      <p>This is a multiplayer game.</p>
+      <p>
+        You can create or join a game.
+        After your character was randomly selected you can show the Barcode to other players.
+      </p>
+      <h4>
+        After all player have generated Barcodes, you can start asking
+        <i>YES</i> or <i>NO</i> questions.
+      </h4>
+      <p>If answer to your question about the character is <b>YES</b> you can ask again.</p>
+      <p>If answer is <b>NO</b> then next player asks questions.</p>
+      <button onclick="showGameQRCode()">Show game QR code</button>
+    `,
+      position: "bottom",
+    },
+    () => {
+      showHowToPlay = true;
+    }
+  );
+}
+
+function showGameQRCode() {
+  window.notie.force({
+    type: "info",
+    text: `
+      <h2>Let other players join by scanning the QR code</h2>
+      <img id="app-url" src="app-url.png">
+    `,
+    position: "bottom",
+  });
+}
+
 function createGame() {
   playerId = Math.floor(Math.random() * characters.length);
+  window.notie.alert({
+    type: "success",
+    text: "Character selected, click Show Barcode for others to join",
+    time: 5,
+    position: "bottom",
+  });
 }
 
 let scanning = false;
@@ -42,17 +92,27 @@ function joinGame(joinButton) {
     joinButton.innerHTML = "Finish Scanning";
     joinButton.style = "color: red;";
     idsInGame.clear();
+    window.notie.alert({
+      type: "info",
+      text: "Scan other players barcodes",
+      stay: true,
+      position: "bottom",
+    });
   } else {
     joinButton.innerHTML = "Join Game";
     joinButton.style = "color: black;";
     const remainingCharacters = characters
       .map((_, index) => index)
       .filter((id) => !idsInGame.has(id));
-    console.log({ remainingCharacters });
     playerId =
       remainingCharacters[
         Math.floor(Math.random() * remainingCharacters.length)
       ];
+    window.notie.alert({
+      type: "success",
+      text: "Show your Barcode to other players",
+      position: "bottom",
+    });
   }
 }
 
@@ -80,8 +140,6 @@ function toggleBarcode(toggleBarcode) {
     toggleBarcode.innerHTML = "Show Barcode";
   }
 }
-
-console.log({ AFRAME });
 
 AFRAME.registerComponent("markerhandler", {
   init: function () {
