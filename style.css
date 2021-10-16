@@ -34,8 +34,9 @@ button {
 }
 
 img {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
 }
 
 .show-barcode {
@@ -53,6 +54,6 @@ li {
 
  /* notie */
 .notie-textbox-inner {
-  max-height: 60vh;
+  max-height: 70vh;
   overflow: scroll;
 }
