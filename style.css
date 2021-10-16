@@ -1,0 +1,27 @@
+#barcodebtn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+#barcodecontainer {
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+#barcodeimg {
+  width: 300px;
+  height: 300px;
+}
+
+.show-marker {
+  display: flex !important;
+}
