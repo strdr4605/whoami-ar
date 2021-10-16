@@ -57,3 +57,8 @@ li {
   max-height: 70vh;
   overflow: scroll;
 }
+
+/* AR.js */
+.a-enter-vr {
+  display: none;
+}
