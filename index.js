@@ -32,9 +32,8 @@ function howToPlay() {
     return;
   }
   showHowToPlay = false;
-  window.notie.force(
+  window.notie.select(
     {
-      type: "info",
       text: `
       <h2>WHO AM I</h2>
       <h3>Augmented Reality edition</h3>
@@ -49,9 +48,15 @@ function howToPlay() {
       </h4>
       <p>If answer to your question about the character is <b>YES</b> you can ask again.</p>
       <p>If answer is <b>NO</b> then next player asks questions.</p>
-      <button onclick="showGameQRCode()">Show game QR code</button>
     `,
       position: "bottom",
+      choices: [
+        {
+          type: "success",
+          text: "Show game QR code",
+          handler: showGameQRCode,
+        },
+      ],
     },
     () => {
       showHowToPlay = true;
@@ -60,6 +65,7 @@ function howToPlay() {
 }
 
 function showGameQRCode() {
+  showHowToPlay = true;
   window.notie.force({
     type: "info",
     text: `
