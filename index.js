@@ -54,7 +54,18 @@ function howToPlay() {
         {
           type: "success",
           text: "Show game QR code",
-          handler: showGameQRCode,
+          handler: () => {
+            showHowToPlay = true;
+            showGameQRCode();
+          },
+        },
+        {
+          type: "neutral",
+          text: "About",
+          handler: () => {
+            showHowToPlay = true;
+            showAbout();
+          },
         },
       ],
     },
@@ -65,12 +76,37 @@ function howToPlay() {
 }
 
 function showGameQRCode() {
-  showHowToPlay = true;
   window.notie.force({
     type: "info",
     text: `
       <h2>Let other players join by scanning the QR code</h2>
       <img id="app-url" src="app-url.png">
+    `,
+    position: "bottom",
+  });
+}
+
+function showAbout() {
+  window.notie.force({
+    type: "info",
+    text: `
+      <p>This app was developed during BEST Hackathon 2021</p>
+      <hr/>
+      <p><b>Team:</b></p>
+      <ul>
+        <li><a href="http://strdr4605.github.io" target="_blank">Dragoș Străinu</a></li>
+        <li><a href="https://www.behance.net/cazacucostel" target="_blank">Costel Cazacu</a></li>
+        <li><a href="https://www.instagram.com/c.gri.gore/" target="_blank">Grigore Chebac</a></li>
+        <li><a href="https://www.instagram.com/kstaty.art/" target="_blank">Nikita Dobrovenco</a></li>
+      </ul>
+      <iframe
+          src="https://ghbtns.com/github-btn.html?user=strdr4605&repo=whoami-ar&type=star&count=true"
+          frameBorder="0"
+          scrolling="0"
+          width="110"
+          height="20"
+          title="GitHub"
+        ></iframe>
     `,
     position: "bottom",
   });
