@@ -112,6 +112,8 @@ function showAbout() {
   });
 }
 
+const joinBtn = document.getElementById("join");
+
 function createGame() {
   playerId = Math.floor(Math.random() * characters.length);
   window.notie.alert({
@@ -120,6 +122,11 @@ function createGame() {
     time: 5,
     position: "bottom",
   });
+
+  // clean Join Button
+  joinBtn.innerHTML = "Join Game";
+  joinBtn.style = "color: black;";
+  scanning = false;
 }
 
 let scanning = false;
@@ -141,6 +148,16 @@ function joinGame(joinButton) {
       position: "bottom",
     });
   } else {
+    if (idsInGame.size === 0) {
+      window.notie.alert({
+        type: "error",
+        text: "<b>No Barcodes scanned, try scanning other players Barcodes, or create a game.</b>",
+        time: 5,
+        position: "bottom",
+      });
+      scanning = true;
+      return;
+    }
     joinButton.innerHTML = "Join Game";
     joinButton.style = "color: black;";
     const remainingCharacters = characters
