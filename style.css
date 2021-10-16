@@ -5,6 +5,7 @@ body {
 
 button {
   margin: 0 10px;
+  font-size: 1rem;
 }
 
 #menu {
@@ -39,4 +40,13 @@ img {
 
 .show-barcode {
   display: flex !important;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
 }
