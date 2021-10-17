@@ -4,6 +4,9 @@ body {
 }
 
 button {
+  display: flex;
+  align-items: center;
+  height: 100%;
   margin: 0 10px;
   font-size: 0.9rem;
   background: #497862;
@@ -21,13 +24,14 @@ button img {
 #menu {
   background-color: #f7961d;
   position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 100%;
   height: 50px;
-  top: 0;
-  left: 0;
+  padding: 5px 0;
   z-index: 100;
 }
 
