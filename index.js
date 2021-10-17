@@ -11,15 +11,47 @@ const characters = [
 ];
 
 const heroes = [
-  { "scale":"1 1 1", "rotation":"-65 45 -45", "gltfModel":"heroes/bruce_lee/scene.gltf" },
-  { "scale":"0.7 0.7 0.7", "rotation":"-90 -105 110", "gltfModel":"heroes/crocodile_gena/scene.gltf"},
-  { "scale":"0.5 0.5 0.5", "rotation":"-80 35 -45", "gltfModel":"heroes/deadpool_bust/scene.gltf"},
-  { "scale":"0.7 0.7 0.7", "rotation":"-80 35 -45", "gltfModel":"heroes/elon_musk/scene.gltf"},
-  { "scale":"2 2 2", "rotation":"-90 5 -15", "gltfModel":"heroes/elvis_presley/scene.gltf"},
-  { "scale":"1 1 1", "rotation":"-80 35 -45", "gltfModel":"heroes/garfield/scene.gltf"},
-  { "scale":"2 2 2", "rotation":"-80 35 -45", "gltfModel":"heroes/gingerbread_man_shrek_2/scene.gltf"},
-  { "scale":"2 2 2", "rotation":"-80 35 -45", "gltfModel":"heroes/jackie_chan/scene.gltf"}
-]
+  {
+    scale: "1 1 1",
+    rotation: "-65 45 -45",
+    gltfModel: "heroes/bruce_lee/scene.gltf",
+  },
+  {
+    scale: "0.7 0.7 0.7",
+    rotation: "-90 -105 110",
+    gltfModel: "heroes/crocodile_gena/scene.gltf",
+  },
+  {
+    scale: "0.5 0.5 0.5",
+    rotation: "-80 35 -45",
+    gltfModel: "heroes/deadpool_bust/scene.gltf",
+  },
+  {
+    scale: "0.7 0.7 0.7",
+    rotation: "-80 35 -45",
+    gltfModel: "heroes/elon_musk/scene.gltf",
+  },
+  {
+    scale: "2 2 2",
+    rotation: "-90 5 -15",
+    gltfModel: "heroes/elvis_presley/scene.gltf",
+  },
+  {
+    scale: "1 1 1",
+    rotation: "-80 35 -45",
+    gltfModel: "heroes/garfield/scene.gltf",
+  },
+  {
+    scale: "2 2 2",
+    rotation: "-80 35 -45",
+    gltfModel: "heroes/gingerbread_man_shrek_2/scene.gltf",
+  },
+  {
+    scale: "2 2 2",
+    rotation: "-80 35 -45",
+    gltfModel: "heroes/jackie_chan/scene.gltf",
+  },
+];
 
 /**
  * @type Set<number>
@@ -29,12 +61,16 @@ let playerId;
 
 const scene = document.getElementsByTagName("a-scene")[0];
 const markers = heroes.map((hiro, i) => {
-  const {rotation, scale,gltfModel} = hiro;
+  const { rotation, scale, gltfModel } = hiro;
+  const binScale = scale
+    .split(" ")
+    .map((n) => n * 2)
+    .join(" ");
   const marker = document.createElement("a-marker");
   marker.setAttribute("type", "barcode");
   marker.setAttribute("markerhandler", true);
   marker.setAttribute("value", i);
-  marker.innerHTML = `<a-entity rotation="${rotation}" scale="${scale}" gltf-model="${gltfModel}"></a-entity`;
+  marker.innerHTML = `<a-entity rotation="${rotation}" scale="${binScale}" gltf-model="${gltfModel}"></a-entity`;
   return marker;
 });
 scene.prepend(...markers);
@@ -146,7 +182,7 @@ async function createGame() {
     }
   }
 
-  playerId = Math.floor(Math.random() * characters.length);
+  playerId = Math.floor(Math.random() * heroes.length);
   window.notie.alert({
     type: "success",
     text: "<b>Character selected, show Barcode for others to join</b>",
@@ -210,7 +246,7 @@ async function joinGame(joinButton) {
     }
     joinButton.innerHTML = "Join Game";
     joinButton.style = "color: white;";
-    const remainingCharacters = characters
+    const remainingCharacters = heroes
       .map((_, index) => index)
       .filter((id) => !idsInGame.has(id));
     playerId =
