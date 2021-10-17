@@ -1,0 +1,11 @@
+Model Information:
+* title:	Wall-E
+* source:	https://sketchfab.com/3d-models/wall-e-1095bf6b98514b368cf7f450297f6e54
+* author:	Juliestrator (https://sketchfab.com/JulianneS)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Wall-E" (https://sketchfab.com/3d-models/wall-e-1095bf6b98514b368cf7f450297f6e54) by Juliestrator (https://sketchfab.com/JulianneS) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

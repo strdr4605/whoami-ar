@@ -1,0 +1,11 @@
+Model Information:
+* title:	sonic the hedgehog running
+* source:	https://sketchfab.com/3d-models/sonic-the-hedgehog-running-676027778c3e4ace81e7da827456a9be
+* author:	HiddenMatrixYT (https://sketchfab.com/HiddenMatrixYT)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "sonic the hedgehog running" (https://sketchfab.com/3d-models/sonic-the-hedgehog-running-676027778c3e4ace81e7da827456a9be) by HiddenMatrixYT (https://sketchfab.com/HiddenMatrixYT) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
