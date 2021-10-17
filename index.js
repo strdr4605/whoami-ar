@@ -47,55 +47,46 @@ const heroes = [
     gltfModel: "heroes/jackie_chan/scene.gltf",
   },
   {
-    scale: "1.5 1.5 1.5",
-    rotation: "-90 55 -75",
-    gltfModel: "heroes/Masha/scene.gltf",
+    scale:"1.5 1.5 1.5",
+    rotation:"-90 55 -75",
+    gltfModel:"heroes/Masha/scene.gltf"
   },
   {
-    scale: "0.005 0.005 0.005",
-    rotation: "-90 55 -55",
-    gltfModel: "heroes/pacman_animated/scene.gltf",
-  },
+    scale:"0.005 0.005 0.005",
+    rotation:"-90 55 -55",
+    gltfModel:"heroes/pacman_animated/scene.gltf" },
   {
-    scale: "1.2 1.2 1.2",
-    rotation: "-90 45 -55",
-    gltfModel: "heroes/pikachu/scene.gltf",
-  },
+    scale:"1.2 1.2 1.2",
+    rotation:"-90 45 -55",
+    gltfModel:"heroes/pikachu/scene.gltf" },
   {
-    scale: "1.5 1.5 1.5",
-    rotation: "-110 55 -55",
-    gltfModel: "heroes/president_obama/scene.gltf",
-  },
+    scale:"1.5 1.5 1.5",
+    rotation:"-110 55 -55",
+    gltfModel:"heroes/president_obama/scene.gltf" },
   {
-    scale: "0.05 0.05 0.05",
-    rotation: "-90 55 -75",
-    gltfModel: "heroes/sonic_the_hedgehog_running/scene.gltf",
-  },
+    scale:"0.05 0.05 0.05",
+    rotation:"-90 55 -75",
+    gltfModel:"heroes/sonic_the_hedgehog_running/scene.gltf" },
   {
-    scale: "0.5 0.5 0.5",
-    rotation: "-90 55 -75",
-    gltfModel: "heroes/spider-man_bust_statue/scene.gltf",
-  },
+    scale:"0.5 0.5 0.5",
+    rotation:"-90 55 -75",
+    gltfModel:"heroes/spider-man_bust_statue/scene.gltf" },
   {
-    scale: "0.4 0.4 0.4",
-    rotation: "-100 55 -55",
-    gltfModel: "heroes/sponge_bob/scene.gltf",
-  },
+    scale:"0.4 0.4 0.4",
+    rotation:"-100 55 -55",
+    gltfModel:"heroes/sponge_bob/scene.gltf" },
   {
-    scale: "0.09 0.09 0.09",
-    rotation: "-90 55 -55",
-    gltfModel: "heroes/voldemort_caricature/scene.gltf",
-  },
+    scale:"0.09 0.09 0.09",
+    rotation:"-90 55 -55",
+    gltfModel:"heroes/voldemort_caricature/scene.gltf" },
   {
-    scale: "0.5 0.5 0.5",
-    rotation: "180 90 -90",
-    gltfModel: "heroes/wall-e/scene.gltf",
-  },
+    scale:"0.5 0.5 0.5",
+    rotation:"180 90 -90",
+    gltfModel:"heroes/wall-e/scene.gltf" },
   {
-    scale: "2.5 2.5 2.5",
-    rotation: "-90 40 -30",
-    gltfModel: "heroes/will_smith/scene.gltf",
-  },
+    scale:"2.5 2.5 2.5",
+    rotation:"-90 40 -30",
+    gltfModel:"heroes/will_smith/scene.gltf" }
 ];
 
 /**
@@ -352,28 +343,3 @@ AFRAME.registerComponent("markerhandler", {
     });
   },
 });
-
-// Loading indicatior
-window.notie.alert({
-  type: "warning",
-  text: '<span id="wait">Loading</span>',
-  stay: true,
-  position: "bottom",
-});
-
-const wait = document.getElementById("wait");
-
-const dots = setInterval(() => {
-  if (wait.innerHTML.length > "Loading...".length) wait.innerHTML = "Loading";
-  else wait.innerHTML += ".";
-}, 300);
-
-window.onload = () => {
-  clearInterval(dots);
-  window.notie.alert({
-    type: "success",
-    text: "Ready to play!",
-    time: 1,
-    position: "bottom",
-  });
-};
