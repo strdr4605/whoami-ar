@@ -22,11 +22,6 @@ const heroes = [
     gltfModel: "heroes/crocodile_gena/scene.gltf",
   },
   {
-    scale: "0.5 0.5 0.5",
-    rotation: "-80 35 -45",
-    gltfModel: "heroes/deadpool_bust/scene.gltf",
-  },
-  {
     scale: "0.7 0.7 0.7",
     rotation: "-80 35 -45",
     gltfModel: "heroes/elon_musk/scene.gltf",
