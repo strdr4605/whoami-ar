@@ -112,9 +112,27 @@ function showAbout() {
   });
 }
 
+async function promiseNotieConfirm(options) {
+  return new Promise((resolve, reject) => {
+    window.notie.confirm(options, resolve, reject);
+  })
+    .then(() => true)
+    .catch(() => false);
+}
+
 const joinBtn = document.getElementById("join");
 
-function createGame() {
+async function createGame() {
+  if (playerId) {
+    const shouldRestart = await promiseNotieConfirm({
+      text: "<b>You have a character selected! Are you sure that you want to create a game?</b>",
+      position: "bottom",
+    });
+    if (!shouldRestart) {
+      return;
+    }
+  }
+
   playerId = Math.floor(Math.random() * characters.length);
   window.notie.alert({
     type: "success",
@@ -134,9 +152,20 @@ let scanning = false;
  *
  * @param {HTMLElement} joinButton
  */
-function joinGame(joinButton) {
+async function joinGame(joinButton) {
   scanning = !scanning;
   if (scanning) {
+    if (playerId) {
+      const shouldRestart = await promiseNotieConfirm({
+        text: "<b>You have a character selected! Are you sure that you want to start scanning?</b>",
+        position: "bottom",
+      });
+      if (!shouldRestart) {
+        scanning = false;
+        return;
+      }
+    }
+
     playerId = undefined;
     joinButton.innerHTML = "Finish Scanning";
     joinButton.style = "color: red;";
