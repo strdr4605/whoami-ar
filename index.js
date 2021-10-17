@@ -96,7 +96,7 @@ function showAbout() {
       <ul>
         <li><a href="http://strdr4605.github.io" target="_blank">Dragoș Străinu</a></li>
         <li><a href="https://www.behance.net/cazacucostel" target="_blank">Costel Cazacu</a></li>
-        <li><a href="https://www.instagram.com/c.gri.gore/" target="_blank">Grigore Chebac</a></li>
+        <li><a href="https://www.linkedin.com/in/chebac-grigore-378524223/" target="_blank">Grigore Chebac</a></li>
         <li><a href="https://www.instagram.com/kstaty.art/" target="_blank">Nikita Dobrovenco</a></li>
       </ul>
       <iframe
