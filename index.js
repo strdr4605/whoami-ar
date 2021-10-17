@@ -145,6 +145,10 @@ async function createGame() {
   joinBtn.innerHTML = "Join Game";
   joinBtn.style = "color: black;";
   scanning = false;
+
+  if (barcodeContainer.classList.contains("show-barcode")) {
+    toggleBarcode(document.getElementById("barcodebtn"));
+  }
 }
 
 let scanning = false;
@@ -176,6 +180,10 @@ async function joinGame(joinButton) {
       stay: true,
       position: "bottom",
     });
+
+    if (barcodeContainer.classList.contains("show-barcode")) {
+      toggleBarcode(document.getElementById("barcodebtn"));
+    }
   } else {
     if (idsInGame.size === 0) {
       window.notie.alert({
