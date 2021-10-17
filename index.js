@@ -136,14 +136,14 @@ async function createGame() {
   playerId = Math.floor(Math.random() * characters.length);
   window.notie.alert({
     type: "success",
-    text: "<b>Character selected, click Show Barcode for others to join</b>",
+    text: "<b>Character selected, show Barcode for others to join</b>",
     time: 5,
     position: "bottom",
   });
 
   // clean Join Button
   joinBtn.innerHTML = "Join Game";
-  joinBtn.style = "color: black;";
+  joinBtn.style = "color: white;";
   scanning = false;
 
   if (barcodeContainer.classList.contains("show-barcode")) {
@@ -196,7 +196,7 @@ async function joinGame(joinButton) {
       return;
     }
     joinButton.innerHTML = "Join Game";
-    joinButton.style = "color: black;";
+    joinButton.style = "color: white;";
     const remainingCharacters = characters
       .map((_, index) => index)
       .filter((id) => !idsInGame.has(id));
@@ -223,7 +223,7 @@ const barcodeWarning = document.getElementById("warning");
 function toggleBarcode(toggleBarcode) {
   barcodeContainer.classList.toggle("show-barcode");
   if (barcodeContainer.classList.contains("show-barcode")) {
-    toggleBarcode.innerHTML = "Hide Barcode";
+    toggleBarcode.innerHTML = '<img src="icons/reconnect-icon_camera.svg">';
     if (playerId !== undefined) {
       barcodeImg.setAttribute("src", `barcodes/${playerId}.png`);
       barcodeImg.style = "display: block;";
@@ -233,7 +233,7 @@ function toggleBarcode(toggleBarcode) {
       barcodeWarning.style = "display: block;";
     }
   } else {
-    toggleBarcode.innerHTML = "Show Barcode";
+    toggleBarcode.innerHTML = '<img src="icons/reconnect-icon_barcode.svg">';
   }
 }
 
