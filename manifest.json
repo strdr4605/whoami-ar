@@ -14,9 +14,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/",
+  "start_url": "/whoami-ar/",
   "background_color": "#FAF181",
   "display": "standalone",
-  "scope": "/",
+  "scope": "/whoami-ar/",
   "theme_color": "#FAF181"
 }
