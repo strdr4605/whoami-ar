@@ -1,0 +1,22 @@
+{
+  "short_name": "WHO AM I",
+  "name": "WHO AM I, Augmented Reality edition",
+  "description": "AR app built at BEST Hackathon 2021",
+  "icons": [
+    {
+      "src": "/icons/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#FAF181",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#FAF181"
+}
