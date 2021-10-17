@@ -1,0 +1,11 @@
+Model Information:
+* title:	Crocodile Gena
+* source:	https://sketchfab.com/3d-models/crocodile-gena-e39180c1d87b41f6a0937485c50d78d1
+* author:	naundob (https://sketchfab.com/naundob)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Crocodile Gena" (https://sketchfab.com/3d-models/crocodile-gena-e39180c1d87b41f6a0937485c50d78d1) by naundob (https://sketchfab.com/naundob) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

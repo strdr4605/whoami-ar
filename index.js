@@ -9,6 +9,18 @@ const characters = [
   "darkorange",
   "magenta",
 ];
+
+const heroes = [
+  { "scale":"1 1 1", "rotation":"-65 45 -45", "gltfModel":"heroes/bruce_lee/scene.gltf" },
+  { "scale":"0.7 0.7 0.7", "rotation":"-90 -105 110", "gltfModel":"heroes/crocodile_gena/scene.gltf"},
+  { "scale":"0.5 0.5 0.5", "rotation":"-80 35 -45", "gltfModel":"heroes/deadpool_bust/scene.gltf"},
+  { "scale":"0.7 0.7 0.7", "rotation":"-80 35 -45", "gltfModel":"heroes/elon_musk/scene.gltf"},
+  { "scale":"2 2 2", "rotation":"-90 5 -15", "gltfModel":"heroes/elvis_presley/scene.gltf"},
+  { "scale":"1 1 1", "rotation":"-80 35 -45", "gltfModel":"heroes/garfield/scene.gltf"},
+  { "scale":"2 2 2", "rotation":"-80 35 -45", "gltfModel":"heroes/gingerbread_man_shrek_2/scene.gltf"},
+  { "scale":"2 2 2", "rotation":"-80 35 -45", "gltfModel":"heroes/jackie_chan/scene.gltf"}
+]
+
 /**
  * @type Set<number>
  */
@@ -16,12 +28,13 @@ const idsInGame = new Set();
 let playerId;
 
 const scene = document.getElementsByTagName("a-scene")[0];
-const markers = characters.map((color, i) => {
+const markers = heroes.map((hiro, i) => {
+  const {rotation, scale,gltfModel} = hiro;
   const marker = document.createElement("a-marker");
   marker.setAttribute("type", "barcode");
   marker.setAttribute("markerhandler", true);
   marker.setAttribute("value", i);
-  marker.innerHTML = `<a-box position="0 0.5 0" color="${color}"></a-box`;
+  marker.innerHTML = `<a-entity rotation="${rotation}" scale="${scale}" gltf-model="${gltfModel}"></a-entity`;
   return marker;
 });
 scene.prepend(...markers);
