@@ -2,7 +2,17 @@
 <html>
 
 <head>
-  <title>WHO AM I Augmented Reality edition</title>
+  <title>WHO AM I, Augmented Reality edition</title>
+  <meta name="description" content="AR app built at BEST Hackathon 2021">
+  <meta property="og:title" content="WHO AM I, Augmented Reality edition">
+  <meta property="og:description" content="AR app built at BEST Hackathon 2021">
+  <meta property="og:image" content="banner.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://strdr4605.github.io/whoami-ar">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="https://strdr4605.github.io/whoami-ar" />
+  <meta name="twitter:creator" content="@strdr4605" />
+
   <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -11,28 +21,28 @@
 </head>
 
 <body style="margin : 0px; overflow: hidden;">
-<div id="menu">
-  <button id="how-to-play" onclick="howToPlay()"><img src="icons/reconnect-icon_how-to-play.svg"></button>
-  <button id="create" onclick="createGame()">Create Game</button>
-  <button id="join" onclick="joinGame(this)">Join Game</button>
-  <button id="barcodebtn" onclick="toggleBarcode(this)"><img src="icons/reconnect-icon_barcode.svg"></button>
-</div>
-<div id="barcode-container">
-  <img id="barcode-img" src="barcodes/0.png" alt="barcode">
-  <h2 id="warning">Create or join a game</h2>
-</div>
+  <div id="menu">
+    <button id="how-to-play" onclick="howToPlay()"><img src="icons/reconnect-icon_how-to-play.svg"></button>
+    <button id="create" onclick="createGame()">Create Game</button>
+    <button id="join" onclick="joinGame(this)">Join Game</button>
+    <button id="barcodebtn" onclick="toggleBarcode(this)"><img src="icons/reconnect-icon_barcode.svg"></button>
+  </div>
+  <div id="barcode-container">
+    <img id="barcode-img" src="barcodes/0.png" alt="barcode">
+    <h2 id="warning">Create or join a game</h2>
+  </div>
 
-<!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
-<a-scene embedded
-         arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+  <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+  <a-scene embedded
+    arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
 
-  <a-marker preset="hiro">
-    <a-entity position="0 -1 0" scale="0.05 0.05 0.05" gltf-model="trex/scene.gltf"></a-entity>
-  </a-marker>
-  <a-entity camera></a-entity>
-</a-scene>
-<script src="https://unpkg.com/notie"></script>
-<script src="index.js"></script>
+    <a-marker preset="hiro">
+      <a-entity position="0 -1 0" scale="0.05 0.05 0.05" gltf-model="trex/scene.gltf"></a-entity>
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
+  <script src="https://unpkg.com/notie"></script>
+  <script src="index.js"></script>
 </body>
 
 </html>
