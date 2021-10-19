@@ -1,105 +1,7 @@
+import { heroes } from './assets.js';
+
 const LOCAL_STORAGE_KEY = "pickedHeroes";
 const PICKED_HEROES_TTL_IN_MS = 300000; // 5 minutes
-
-const characters = [
-  "red",
-  "green",
-  "blue",
-  "white",
-  "black",
-  "yellow",
-  "purple",
-  "darkorange",
-  "magenta",
-];
-
-const heroes = [
-  {
-    scale: "1 1 1",
-    rotation: "-65 45 -45",
-    gltfModel: "heroes/bruce_lee/scene.gltf",
-  },
-  {
-    scale: "0.7 0.7 0.7",
-    rotation: "-90 -105 110",
-    gltfModel: "heroes/crocodile_gena/scene.gltf",
-  },
-  {
-    scale: "0.7 0.7 0.7",
-    rotation: "-80 35 -45",
-    gltfModel: "heroes/elon_musk/scene.gltf",
-  },
-  {
-    scale: "2 2 2",
-    rotation: "-90 5 -15",
-    gltfModel: "heroes/elvis_presley/scene.gltf",
-  },
-  {
-    scale: "1 1 1",
-    rotation: "-80 35 -45",
-    gltfModel: "heroes/garfield/scene.gltf",
-  },
-  {
-    scale: "2 2 2",
-    rotation: "-80 35 -45",
-    gltfModel: "heroes/gingerbread_man_shrek_2/scene.gltf",
-  },
-  {
-    scale: "2 2 2",
-    rotation: "-80 35 -45",
-    gltfModel: "heroes/jackie_chan/scene.gltf",
-  },
-  {
-    scale: "1.5 1.5 1.5",
-    rotation: "-90 55 -75",
-    gltfModel: "heroes/Masha/scene.gltf",
-  },
-  {
-    scale: "0.005 0.005 0.005",
-    rotation: "-90 55 -55",
-    gltfModel: "heroes/pacman_animated/scene.gltf",
-  },
-  {
-    scale: "1.2 1.2 1.2",
-    rotation: "-90 45 -55",
-    gltfModel: "heroes/pikachu/scene.gltf",
-  },
-  {
-    scale: "1.5 1.5 1.5",
-    rotation: "-110 55 -55",
-    gltfModel: "heroes/president_obama/scene.gltf",
-  },
-  {
-    scale: "0.05 0.05 0.05",
-    rotation: "-90 55 -75",
-    gltfModel: "heroes/sonic_the_hedgehog_running/scene.gltf",
-  },
-  {
-    scale: "0.5 0.5 0.5",
-    rotation: "-90 55 -75",
-    gltfModel: "heroes/spider-man_bust_statue/scene.gltf",
-  },
-  {
-    scale: "0.4 0.4 0.4",
-    rotation: "-100 55 -55",
-    gltfModel: "heroes/sponge_bob/scene.gltf",
-  },
-  {
-    scale: "0.09 0.09 0.09",
-    rotation: "-90 55 -55",
-    gltfModel: "heroes/voldemort_caricature/scene.gltf",
-  },
-  {
-    scale: "0.5 0.5 0.5",
-    rotation: "180 90 -90",
-    gltfModel: "heroes/wall-e/scene.gltf",
-  },
-  {
-    scale: "2.5 2.5 2.5",
-    rotation: "-90 40 -30",
-    gltfModel: "heroes/will_smith/scene.gltf",
-  },
-];
 
 /**
  * @type Set<number>
@@ -147,17 +49,21 @@ function setPlayerIdInPickedHeroes(id) {
 }
 
 const scene = document.getElementsByTagName("a-scene")[0];
-const markers = heroes.map((hiro, i) => {
-  const { rotation, scale, gltfModel } = hiro;
-  const binScale = scale
-    .split(" ")
-    .map((n) => n * 2)
-    .join(" ");
+const markers = heroes.map((hero, i) => {
+  const { rotation, scale, gltfModel, width, height, src } = hero;
   const marker = document.createElement("a-marker");
   marker.setAttribute("type", "barcode");
   marker.setAttribute("markerhandler", true);
   marker.setAttribute("value", i);
-  marker.innerHTML = `<a-entity rotation="${rotation}" scale="${binScale}" gltf-model="${gltfModel}"></a-entity`;
+  if (src) {
+    marker.innerHTML = `<a-image rotation="-90 0 0" width="${width}" height="${height}" src="${src}"></a-image>`;
+  } else {
+    const binScale = scale
+      .split(" ")
+      .map((n) => n * 2)
+      .join(" ");
+    marker.innerHTML = `<a-entity rotation="${rotation}" scale="${binScale}" gltf-model="${gltfModel}"></a-entity>`;
+  }
   return marker;
 });
 scene.prepend(...markers);
