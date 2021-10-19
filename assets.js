@@ -186,4 +186,79 @@ export const heroes = [
     height: "3",
     src: "heroes/jerry.png",
   },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/barbie.png",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/barbossa.jpeg",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/batman.jpeg",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/deadpool.jpeg",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/godzilla.jpeg",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/mario.png",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/morgan_freeman.jpeg",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/mr_bean.png",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/optimus_prime.png",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/shrek_donkey.png",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/sonic.jpeg",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/superman.png",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/tarzan.jpeg",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/zorro.jpeg",
+  },
+  {
+    width: "3",
+    height: "3",
+    src: "heroes/zuko.jpeg",
+  },
 ];
