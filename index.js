@@ -1,3 +1,6 @@
+const LOCAL_STORAGE_KEY = "pickedHeroes";
+const PICKED_HEROES_TTL_IN_MS = 300000; // 5 minutes
+
 const characters = [
   "red",
   "green",
@@ -47,46 +50,55 @@ const heroes = [
     gltfModel: "heroes/jackie_chan/scene.gltf",
   },
   {
-    scale:"1.5 1.5 1.5",
-    rotation:"-90 55 -75",
-    gltfModel:"heroes/Masha/scene.gltf"
+    scale: "1.5 1.5 1.5",
+    rotation: "-90 55 -75",
+    gltfModel: "heroes/Masha/scene.gltf",
   },
   {
-    scale:"0.005 0.005 0.005",
-    rotation:"-90 55 -55",
-    gltfModel:"heroes/pacman_animated/scene.gltf" },
+    scale: "0.005 0.005 0.005",
+    rotation: "-90 55 -55",
+    gltfModel: "heroes/pacman_animated/scene.gltf",
+  },
   {
-    scale:"1.2 1.2 1.2",
-    rotation:"-90 45 -55",
-    gltfModel:"heroes/pikachu/scene.gltf" },
+    scale: "1.2 1.2 1.2",
+    rotation: "-90 45 -55",
+    gltfModel: "heroes/pikachu/scene.gltf",
+  },
   {
-    scale:"1.5 1.5 1.5",
-    rotation:"-110 55 -55",
-    gltfModel:"heroes/president_obama/scene.gltf" },
+    scale: "1.5 1.5 1.5",
+    rotation: "-110 55 -55",
+    gltfModel: "heroes/president_obama/scene.gltf",
+  },
   {
-    scale:"0.05 0.05 0.05",
-    rotation:"-90 55 -75",
-    gltfModel:"heroes/sonic_the_hedgehog_running/scene.gltf" },
+    scale: "0.05 0.05 0.05",
+    rotation: "-90 55 -75",
+    gltfModel: "heroes/sonic_the_hedgehog_running/scene.gltf",
+  },
   {
-    scale:"0.5 0.5 0.5",
-    rotation:"-90 55 -75",
-    gltfModel:"heroes/spider-man_bust_statue/scene.gltf" },
+    scale: "0.5 0.5 0.5",
+    rotation: "-90 55 -75",
+    gltfModel: "heroes/spider-man_bust_statue/scene.gltf",
+  },
   {
-    scale:"0.4 0.4 0.4",
-    rotation:"-100 55 -55",
-    gltfModel:"heroes/sponge_bob/scene.gltf" },
+    scale: "0.4 0.4 0.4",
+    rotation: "-100 55 -55",
+    gltfModel: "heroes/sponge_bob/scene.gltf",
+  },
   {
-    scale:"0.09 0.09 0.09",
-    rotation:"-90 55 -55",
-    gltfModel:"heroes/voldemort_caricature/scene.gltf" },
+    scale: "0.09 0.09 0.09",
+    rotation: "-90 55 -55",
+    gltfModel: "heroes/voldemort_caricature/scene.gltf",
+  },
   {
-    scale:"0.5 0.5 0.5",
-    rotation:"180 90 -90",
-    gltfModel:"heroes/wall-e/scene.gltf" },
+    scale: "0.5 0.5 0.5",
+    rotation: "180 90 -90",
+    gltfModel: "heroes/wall-e/scene.gltf",
+  },
   {
-    scale:"2.5 2.5 2.5",
-    rotation:"-90 40 -30",
-    gltfModel:"heroes/will_smith/scene.gltf" }
+    scale: "2.5 2.5 2.5",
+    rotation: "-90 40 -30",
+    gltfModel: "heroes/will_smith/scene.gltf",
+  },
 ];
 
 /**
@@ -94,6 +106,45 @@ const heroes = [
  */
 const idsInGame = new Set();
 let playerId;
+
+/**
+ * Gets heroes from localStorage that where picked already
+ * @return {number[]} Array of ids
+ */
+function getPickedHeroes() {
+  const pickedHeroes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+  if (!pickedHeroes) {
+    return [];
+  }
+  if (
+    pickedHeroes.expireAt < Date.now() ||
+    pickedHeroes.ids.length === heroes.length
+  ) {
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
+    return [];
+  }
+  return pickedHeroes.ids;
+}
+
+/**
+ *
+ * @param {number} id - playerId
+ */
+function setPlayerIdInPickedHeroes(id) {
+  const pickedHeroes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+  if (!pickedHeroes) {
+    localStorage.setItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify({
+        expireAt: Date.now() + PICKED_HEROES_TTL_IN_MS,
+        ids: [id],
+      })
+    );
+  } else {
+    pickedHeroes.ids = [...pickedHeroes.ids, id];
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(pickedHeroes));
+  }
+}
 
 const scene = document.getElementsByTagName("a-scene")[0];
 const markers = heroes.map((hiro, i) => {
@@ -218,7 +269,14 @@ async function createGame() {
     }
   }
 
-  playerId = Math.floor(Math.random() * heroes.length);
+  const pickedHeroes = getPickedHeroes();
+  const remainingCharacters = heroes
+    .map((_, index) => index)
+    .filter((id) => !pickedHeroes.includes(id));
+  playerId =
+    remainingCharacters[Math.floor(Math.random() * remainingCharacters.length)];
+  setPlayerIdInPickedHeroes(playerId);
+
   window.notie.alert({
     type: "success",
     text: "<b>Character selected, show Barcode for others to join</b>",
@@ -282,13 +340,16 @@ async function joinGame(joinButton) {
     }
     joinButton.innerHTML = "Join Game";
     joinButton.style = "color: white;";
+    const pickedHeroes = getPickedHeroes();
     const remainingCharacters = heroes
       .map((_, index) => index)
-      .filter((id) => !idsInGame.has(id));
+      .filter((id) => !idsInGame.has(id) || !pickedHeroes.includes(id));
     playerId =
       remainingCharacters[
         Math.floor(Math.random() * remainingCharacters.length)
       ];
+    setPlayerIdInPickedHeroes(playerId);
+
     window.notie.alert({
       type: "success",
       text: "<b>Character selected, show your Barcode to other players</b>",
