@@ -1,4 +1,4 @@
-import { heroes } from './assets.js';
+import { heroes } from "./assets.js";
 
 const LOCAL_STORAGE_KEY = "pickedHeroes";
 const PICKED_HEROES_TTL_IN_MS = 300000; // 5 minutes
@@ -116,6 +116,7 @@ function howToPlay() {
     }
   );
 }
+window.howToPlay = howToPlay;
 
 function showGameQRCode() {
   window.notie.force({
@@ -199,6 +200,7 @@ async function createGame() {
     toggleBarcode(document.getElementById("barcodebtn"));
   }
 }
+window.createGame = createGame;
 
 let scanning = false;
 /**
@@ -263,6 +265,7 @@ async function joinGame(joinButton) {
     });
   }
 }
+window.joinGame = joinGame;
 
 const barcodeContainer = document.getElementById("barcode-container");
 const barcodeImg = document.getElementById("barcode-img");
@@ -288,6 +291,7 @@ function toggleBarcode(toggleBarcode) {
     toggleBarcode.innerHTML = '<img src="icons/reconnect-icon_barcode.svg">';
   }
 }
+window.toggleBarcode = toggleBarcode;
 
 AFRAME.registerComponent("markerhandler", {
   init: function () {
