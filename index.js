@@ -91,6 +91,7 @@ function howToPlay() {
       <p>If answer to your question about the character is <b>YES</b> you can ask again.</p>
       <p>If answer is <b>NO</b> then next player asks questions.</p>
     `,
+      cancelText: "Close",
       position: "bottom",
       choices: [
         {
